@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>SimpleSlides</title>
+	
+	<style type="text/css">
+	/* 	The following CSS is necessary for making this a presentation and not a blob of nonsense. 
+		Change it at your own risk. I suggest adding "custom" css at the end.
+	*/
+		* { box-sizing: border-box; }
+		html { margin: 0; padding: 0; }
+		body { font-size: 1em; }
+		.slide { position:absolute; top:0; left:0; height:100%; width:100%; padding:20px; }
+		.navigation { position:absolute; bottom:10px; z-index:1000; cursor: pointer; }
+			#next { right: 10px; }
+			#previous { left: 10px; }
+		#counter { position:absolute; top:10px; right:10px; display: inline-block; }
+		
+	/*	Custom CSS to make the presentation pretty. */
+		body { font-family: Garamond, Georgia, serif; }
+	</style>
+	
+	<!-- Use html5shim so that HTML5 elements work in old browsers - keep in <header> -->
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	
+</head>
+<body>	
+
+	<!-- 	Give each slide an id="#" where # is the number order of the slide. 
+			Don't skip numbers, and stay in order! 									-->
+	
+	<!-- first slide -->
+	<div class="slide" id="1">
+		
+		<h1>SimpleSlides 1.0</h1>
+	    
+	    <h2>A single HTML document using CSS and jQuery to make a Powerpoint-like presentation</h2>
+	    
+	    <p>Made with love, by <a href="http://madeby.jennschiffer.com" target="_blank">Jenn Schiffer</a>.</p>
+	    
+	</div>
+	
+	
+	<!-- second slide -->
+	<div class="slide" id="2">
+		
+	    <h3>Features</h3>
+	 	
+	    <ul>
+	    	<li>Your slides are a web page, so all slide content is HTML.</li>
+	    	<li>Completely customizable style-wise - just add to existing CSS.</li>
+	        <li>Click navigation, as well as simple keyboard shortcuts (&larr; / &rarr;)</li>
+	        <li>Progress tracker - shows what slide out of how many you're on.</li>
+	        <li>Cross-browser capability across the board - Chrome, Safari, Firefox, IE.</li>
+	        <li>Looks great on the iPad, which is what I usually present these things on.</li>
+	        <li>Well documented - read my inline comments and learn how it was made and how to edit.</li>
+	    </ul>
+	    
+	</div>
+	
+	
+	<!-- third slide -->
+	<div class="slide" id="3">
+	
+		<h3>Future changes</h3>
+	    
+	    <ul>
+	        <li>Rework scripts so providing slide ID #s is not required</li>
+	        <li>Create a couple of simple external stylesheet themes for example</li>
+	        <li>Not much else - "keep it simple, stupid!"</li>
+	    </ul>
+	
+	</div>
+	
+	
+	<!-- navigation arrows for slides -->
+	<div class="navigation" id="previous"> &larr; </div>
+	<div class="navigation" id="next"> &rarr; </div>
+	
+	<!-- slide counter space - don't put anything in these div tags. the jQuery script below populates it automagically -->
+	<div id="counter"></div>
+	
+	
+	<!-- jQuery - required for slides to work -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+								   
+			// Initially hide all slides
+			$(".slide").hide();
+					
+			// The last slide's ID should be the number of slides
+			var lastSlideID = $(".slide").length;
+			
+			// The first slide is always the first slide! So let's make visible and set the counter
+			var firstSlideID = 1;
+			$("#"+firstSlideID).show().addClass("current");
+			$("#counter").text(firstSlideID + " / " + lastSlideID);
+			
+			// If you click on "next" arrow, call the nextSlide function
+			$("#next").click(nextSlide);
+			
+			// If you click on "previous" arrow, call the previousSlide function
+			$("#previous").click(previousSlide);
+			
+			// adding keyboard shortcuts for changing slides
+			$(document).keydown(function(e){
+				if (e.which == 39) { 
+					// right key pressed => next slide
+					nextSlide();
+					return false;
+				}
+				else if (e.which == 37) {
+						// left key pressed => previous slide
+						previousSlide();
+						return false;
+					}
+			});
+			
+			function nextSlide() {
+				// Get the current slide's ID so we know where we are
+				var currentSlideID = $(".current").attr('id');
+				
+				// Get the next slide's ID
+				if ( currentSlideID != lastSlideID ) {
+					var nextSlideID = parseInt(currentSlideID) + 1;
+				}
+				else {
+					// This must be the last slide, so go back to slide one.
+					var nextSlideID = firstSlideID;
+				}
+				
+				$("#" + currentSlideID).fadeOut().removeClass("current");
+				$("#" + nextSlideID).fadeIn().addClass("current");
+				$("#counter").text(nextSlideID + " / " + lastSlideID);
+			}
+			
+			function previousSlide() {
+				// Get the current slide's ID so we know where we are
+				var currentSlideID = $(".current").attr('id');
+				
+				// Get the previous slide's ID
+				if ( currentSlideID != firstSlideID ) {
+					var nextSlideID = parseInt(currentSlideID) - 1;
+				}
+				else {
+					// This must be the first slide, so go back to the last slide.
+					var nextSlideID = lastSlideID;
+				}
+				
+				$("#" + currentSlideID).fadeOut().removeClass("current");
+				$("#" + nextSlideID).fadeIn().addClass("current");
+				$("#counter").text(nextSlideID + " / " + lastSlideID);
+			}
+							   
+		});	
+	</script>
+
+</body>
+</html>
