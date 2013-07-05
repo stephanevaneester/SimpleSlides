@@ -5,6 +5,8 @@
 
 You wanted a plugin version of SimpleSlides and so I effing made one. I also refactored the code of the single-page version to be faster and easier to understand. The single-page version is heavily documented, the plugin notsomuch.
 
+Oh, and shout out to my fellow [css pervert](http://cssperverts.com), Nick, for sitting through a Google Hangout with our cats and helping me out a bit with the plugin. Cool dude.
+
 ####Changelog
 Version 3.0 "2 Chainz"
 
