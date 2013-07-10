@@ -10,8 +10,8 @@ Oh, and shout out to my fellow [css pervert](http://cssperverts.com), Nick, for 
 ####Changelog
 Version 3.0 "2 Chainz"
 
-- original single-page html/js version refactored and optimized (_single-page.html_)
-- new jQuery plugin! (_/plugin/simpleslides.js_)
+- original single-page html/js version refactored and optimized (*single-page.html*)
+- new jQuery plugin! (*/plugin/simpleslides.js*)
 
 
 Version 2.0 "Kyle MacLachlan"
