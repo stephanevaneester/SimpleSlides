@@ -1,13 +1,16 @@
 #SimpleSlides
-## A baby suite of HTML/jQuery slideshow apps
+## A simple single-page app for making HTML slides real quick and easily.
 
-### Made with love by [Jenn Schiffer](http://jennschiffer.com).
+### made with love by [jenn](http://jennmoney.biz).
 
-You wanted a plugin version of SimpleSlides and so I effing made one. I also refactored the code of the single-page version to be faster and easier to understand. The single-page version is heavily documented, the plugin notsomuch.
-
-Oh, and shout out to my fellow [css pervert](http://cssperverts.com), Nick, for sitting through a Google Hangout with our cats and helping me out a bit with the plugin. Cool dude.
+Look at the source for documentation because I am terrible and too busy to put it here just yet ****dives into volcano****
 
 ####Changelog
+Version 4.0 "Three Dog Night"
+
+- "one is the loneliest number and it's also how many projects are in this project, so this is now just the single-page SimpleSlides and not the jquery plugin" - Abraham Lincoln
+
+
 Version 3.0 "2 Chainz"
 
 - original single-page html/js version refactored and optimized (single-page.html)
