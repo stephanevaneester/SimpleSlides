@@ -150,6 +150,9 @@
     
         // update url
         updateURL();
+
+        // fire slide event
+        fireSlideEvent();
       };
       
       var previousSlide = function() {
@@ -177,6 +180,9 @@
     
         // update URL
         updateURL();
+
+        // fire slide event
+        fireSlideEvent();
       };
     
       var goToSlide = function(slideNumber) {
@@ -191,8 +197,14 @@
         // update counter
         updateCounter();
       }
-      
-    
+
+      var fireSlideEvent = function(slide) {
+        var slideEvent = new window.CustomEvent('slidechanged', {
+          detail: { slide: slide || $currentSlide }
+        });
+        window.dispatchEvent(slideEvent);
+      }
+
       /*** INIT SLIDESHOW ***/
       
       // Initially hide all slides
